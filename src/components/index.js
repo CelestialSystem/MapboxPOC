@@ -12,7 +12,9 @@ class Map extends Component {
       latitude: this.props.latitude,
       zoom: this.props.zoom,
       mapStyle: this.props.mapStyle ? this.props.mapStyle : 'streets-v9',
-      theme: this.props.theme
+      theme: this.props.theme,
+      height: this.props.height,
+      width: this.props.width
     };
   }
 
@@ -49,7 +51,13 @@ class Map extends Component {
   }
 
   render() {
-    return <div ref={el => (this.mapContainer = el)} className="mapContainer" />;
+    const style = {
+      position: 'static',
+      height: this.state.height + 'vh',
+      width: this.state.width + '%'
+    };
+
+    return <div ref={el => (this.mapContainer = el)} style={style} />;
   }
 }
 
